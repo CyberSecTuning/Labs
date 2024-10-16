@@ -1,0 +1,20 @@
+CRN;subject;course;section;title;cretits;time;type;room;instructor;campus
+36653;IS;2053;001;Program Lang I with Scripting;3;Tuesday, Thursday, 10:00 AM - 11:15 AM ;Traditional in-person ;Business Building Room: 3.03.14;Bachura, Eric;Main Campus
+36657;IS;2053;002;Program Lang I with Scripting;3;Tuesday,Thursday, 02:30 PM - 03:45 PM ;Traditional in-person ;Business Building Room: 3.01.08;Villarreal, Marco;Main Campus
+36661;IS;2053;003;Program Lang I with Scripting;3;No set time;Online only;None;Villarreal, Marco;Internet
+36667;IS;2053;004;Program Lang I with Scripting;3;Monday,Wednesday, 06:00 PM - 07:15 PM;Traditional in-person ;Main Building Room: 1.122 ;Castaneda, Robert;Main Campus
+36668;IS;2053;005;Program Lang I with Scripting;3;No set time;Online only;None;Castaneda, Robert;Internet
+36678;IS;2053;006;Program Lang I with Scripting;3;No set time;Online only;None;Bhatt, Paras;Internet
+36683;IS;2053;007;Program Lang I with Scripting;3;Tuesday,Thursday, 04:00 PM - 05:15 PM ;Traditional in-person ;Business Building Room: 3.02.30 ;Burres, Ian;Main Campus
+36685;IS;2053;008;Program Lang I with Scripting;3;No set time;Online only;None;Burres, Ian;Internet
+38272;IS;2053;009;Program Lang I with Scripting;3;Tuesday,Thursday, 06:00 PM - 07:15 PM;Traditional in-person ;Business Building Room: 3.04.08 ;Quebodeaux, Devin;Main Campus
+36690;IS;2053;ON1;Program Lang I with Scripting;3;No set time;Online only;None;Newsom, John;Online Programs
+36692;IS;2053;ON2;Program Lang I with Scripting;3;No set time;Online only;None;Newsom, John;Online Programs
+36694;IS;2063;001;Program Lang II with Java;3;Tuesday,Thursday, 10:00 AM - 11:15 AM ;Online only, at set time ;Internet Class Room;Shepherd, Linda;Internet
+36695;IS;2063;002;Program Lang II with Java;3;Tuesday,Thursday, 01:00 PM - 02:15 PM ;Online only, at set time ;Internet Class Room;Shepherd, Linda;Internet
+36696;IS;2063;003;Program Lang II with Java;3;Tuesday,Thursday, 02:30 PM - 03:45 PM ;Online only, at set time ;Internet Class Room;Shepherd, Linda;Internet
+38273;IS;2063;004;Program Lang II with Java;3;Tuesday,Thursday, 06:00 PM - 07:15 PM;Online only, at set time ;Internet Class Room;Shepherd, Linda;Internet
+38274;IS;2063;005;Program Lang II with Java;3;Monday,Wednesday,Friday, 11:00 AM - 11:50 AM ;Traditional in-person ;Business Building Room: 3.02.20;Castaneda, Robert;Main Campus
+39641;IS;2063;006;Program Lang II with Java;3;No set time;Online only;None;Joshuva, Justin;Internet
+36698;IS;2063;ON1;Program Lang II with Java;3;No set time;Online only;None;Castaneda, Robert;Online Programs
+38277;IS;2063;ON2;Program Lang II with Java;3;No set time;Online only;None;Joshuva, Justin;Online Programs

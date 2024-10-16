@@ -1,0 +1,209 @@
+import java.util.Scanner; // import scanner
+import java.util.Calendar; // import calendar
+import java.util.ArrayList; // import arraylist
+import java.io.File; // import file
+import java.io.PrintWriter; // import printWriter
+import java.io.IOException; //import IOException
+
+/*
+ * SalesSystem class 
+ */
+
+public class SalesSystem
+{
+  private SalesReport[] reports; // declare private SalesReport array reports
+  private Scanner input = new Scanner(System.in); // declare input scanner variable
+  private Calendar dateTime; //declare dateTime calendar variable
+  private ArrayList<String> salesReports = new ArrayList<String>(); // declare salesReports Arraylist String
+  private String fileName = ""; // declare fileName String
+  private char count; // declare char count. 
+  
+  /*
+ * SalesSystem method 
+ */
+  
+  public void SalesStystem() 
+  {
+  } // end SalesSystem 
+  
+ /*
+ * start method 
+ */
+  
+  public void start()
+  {
+    /*
+     * prompt user  Priming read to enter the sales system.
+     * TANDEM ENTERPRISES
+     * Begin the processing of a sales report? Enter 'Y' or 'N':
+     * 
+     * If the answer is N, call exitMessage() to print an exit message
+     */
+  
+    System.out.printf("%nPriming read to enter the sales system.%n");
+    System.out.printf("%nTANDEM ENTERPRISES%n");
+    System.out.printf("%nBegi1n the processing of a sales report? Enter 'Y' or 'N': ");
+    count = input.nextLine().toUpperCase().charAt(0); 
+    
+    if(count == 'Y') // if statement, if count is equal to Y call the following methods
+    {
+      processSalesReport();
+      writeSalesRepData();
+      checkInputFile();
+    } // end if
+    
+    exitMessage();
+    
+  }// end start method
+  
+  
+ /*
+ * processSalesReport method 
+ */
+  
+  public void processSalesReport()
+  {
+    int size = 0; // declare local size variable and initalize to 0.
+    int qtrCounter = 0; // declare local qtrCounter variable and initalize to 0.
+    int monthCounter = 0; // declare local monthCounter variable and initalize to 0.
+    String aSalesReport = "%n%nTANDEM ENTERPRISES"; // declare aSalesReport string and initialize to "\n\nTANDEM ENTERPRISES"
+    
+    SalesReport anotherObj = new SalesReport(); // declare new SalesReport object anotherObj.
+    
+
+    anotherObj.setProjectedSales();
+    
+    size = anotherObj.setNoSalesReps();
+    
+    reports = new SalesReport[size];
+    
+    for(int i = 0; i < size; i++)
+    {
+      qtrCounter = 1;
+      reports[i] = new SalesReport();
+      reports[i].setSalesRep(i + 1);
+      reports[i].setNoQtrs();
+      while(qtrCounter <= reports[i].getNoQtrs())
+      {
+        monthCounter = 1;
+        reports[i].chooseQtr(qtrCounter);
+        while(monthCounter <= reports[i].getNoMonths())
+        {
+          reports[i].determineMonthNo(monthCounter);
+          reports[i].setSalesRevenue();
+          reports[i].calculateQtrlySales();
+          ++monthCounter;
+        }
+        ++qtrCounter;
+      }
+      reports[i].calculateAnnualSales();
+      aSalesReport += reports[i].getSalesRepRevReport();
+      aSalesReport += reports[i].getRepTargetMsg();
+      salesReports.add(aSalesReport);
+      aSalesReport = "%n%n TANDEM ENTERPRISES";
+    }
+    for(String eachReport : salesReports) // enhanced for-loop assign each String object from salesReports to eachReport.
+    {
+      System.out.printf("%n%s", eachReport); // print eachReport
+    }
+    anotherObj.getCompanyTargetMsg(); // Call getCompanyTargetMsg() using the non-array object for SalesReport
+  }
+  
+ /*
+ * writeSalesRepData method 
+ */
+  
+  public void writeSalesRepData()
+  {
+    String record; // declare and initialize record String.
+    PrintWriter outputFile = null; //declare and initialize PrintWriter outputFile to null. 
+    boolean fileError = false; // declare and initalize boolean test variable fileError to false. 
+    
+    try { // start try block
+      /*
+       * prompt user to Enter the file name for sales report (WARNING: This will erase a pre-existing file!):
+       */
+      System.out.printf("%nEnter the file name for sales report (WARNING: This will erase a pre-existing file!): ");
+      fileName = input.next(); //capture user input to fileName variable.
+      outputFile = new PrintWriter(fileName); //Open the file in PrintWriter.
+      
+      /* for-loop to get the data from the array into the record variable using
+       * these format specifiers: "%s, %d, %s, %.2f%n" in the order of the get
+       * methods for the date, number of quarters, sales rep, and quarterly sales. 
+       */
+      for(int i = 0; i < reports.length; i++)
+      {
+        record = String.format("%s, %d, %s, %.2f%n",
+                                      reports[i].getDate(),
+                                      reports[i].getNoQtrs(),
+                                      reports[i].getSalesRep(),                           
+                                      reports[i].getQuarterlySales());
+        outputFile.printf(record);
+      }
+    } catch(IOException e) //catch block that catches an IOException into e
+    {
+      System.err.printf("%nFile cannot be created.%n"); //Use the err object from System to call printf() by sending it this message: File cannot be created. 
+      fileError = true; //Re-initialize fileError to true.
+    }
+    if(!fileError) //a single-selection if, test for there is no fileError.
+    {
+      outputFile.close(); //Close the outputFile
+      System.out.printf("Data written to the %s file.%n", fileName); //Print the message: Data written to the Xxxxxxxxxxx file. where the x’s is the name of the file.
+    }
+  }
+  
+ /*
+ * checkInputFile method 
+ */
+  public void checkInputFile()
+  {
+    //String fileName = "SalesReports.txt";
+    File file = null; // declare File variable file.
+    String fileRecord = ""; //declare String variable fileRecord. 
+    boolean fileNotFound = false; // declare boolean variable fileNotFound. 
+    Scanner inputFile = null; // declare inputFile Scanner. 
+    
+    try { // being try block
+      System.out.printf("%nEnter the name for the sales report file: ");
+      input.nextLine();
+      fileName = input.nextLine();
+      file = new File(fileName);
+      inputFile = new Scanner(file);
+      
+      while(inputFile.hasNext())
+      {
+        fileRecord = inputFile.nextLine();
+        System.out.printf("%n%s", fileRecord);
+      }
+      System.out.println();
+      
+    }catch(IOException e) {
+      System.err.printf("File not found!%n");
+      fileNotFound = true;
+      
+    }catch(NullPointerException e) {
+      System.err.printf("Record couldn't be accessed or read.%n");
+      fileNotFound = true;
+    }
+    
+    if(!fileNotFound) 
+    {
+      inputFile.close();
+    }
+  }
+ /*
+ * exitMessage method 
+ */
+  public void exitMessage()
+  {
+    System.out.printf("%nExiting Sales System.%n"); //print the exit message Exiting Sales System.
+  }
+}
+
+
+
+
+        
+                                          
+    
+      

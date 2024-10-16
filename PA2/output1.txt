@@ -1,0 +1,92 @@
+ 
+What is the projected annual sales for Tandem? 5OO000
+
+NOT a valid floating-point! Please re-enter the projected sales for Tandem: 500000
+
+How many sales reps work for Tandem? @
+
+NOT a valid integer! Please re-enter the projected sales reps for Tandem: 2
+
+Enter the name of a sales rep: julian caesar
+
+Enter the number of quarters worked (no less than 1 or greater than 4): I
+
+NOT a valid integer! Please re-enter the number of quarters worked (1-4): 1
+
+1. First Quarter
+2. Second Quarter
+3. Third Quarter
+4. Fourth Quarter
+
+Choose the quarter in which sales were earned: W
+
+NOT a valid integer! Please re-enter the quarter.
+
+1. First Quarter
+2. Second Quarter
+3. Third Quarter
+4. Fourth Quarter
+
+Choose the quarter in which sales were earned: 2
+
+Enter the sales revenue for the 1st month of the Second Quarter: !00000
+
+NOT a valid floating-point!
+
+Please re-enter the sales revenue for the 1st month of the Second Quarter: 100000
+
+Enter the sales revenue for the 2nd month of the Second Quarter: 50000
+
+Enter the sales revenue for the 3rd month of the Second Quarter: 100000
+
+
+TANDEM ENTERPRISES
+SALES REVENUE FOR 1 QUARTER(S) OF 2023
+SALES REP:  Julian Caesar
+
+Total Year-To-Date:            $250,000.00
+
+Keep up the GOOD work, Julian. There is a possible year-end bonus!
+
+Enter the name of the next sales rep: Monique La Femme
+
+Enter the number of quarters worked (no less than 1 or greater than 4): 2
+
+1. First Quarter
+2. Second Quarter
+3. Third Quarter
+4. Fourth Quarter
+
+Choose the quarter in which sales were earned: 1
+
+Enter the sales revenue for the 1st month of the First Quarter: 5000
+
+Enter the sales revenue for the 2nd month of the First Quarter: 6000
+
+Enter the sales revenue for the 3rd month of the First Quarter: 5000
+
+1. First Quarter
+2. Second Quarter
+3. Third Quarter
+4. Fourth Quarter
+
+Choose the nextquarter in which sales were earned: 2
+
+Enter the sales revenue for the 1st month of the Second Quarter: 5000
+
+Enter the sales revenue for the 2nd month of the Second Quarter: 6000
+
+Enter the sales revenue for the 3rd month of the Second Quarter: 5000
+
+
+TANDEM ENTERPRISES
+SALES REVENUE FOR 2 QUARTER(S) OF 2023
+SALES REP:  Monique La Femme
+
+Total Year-To-Date:            $32,000.00
+
+So far sales are lagging behind projections.
+
+CORPORATE SALES PERFORMANCE
+
+Sales are lagging projections. A year-end bonus may not be possible

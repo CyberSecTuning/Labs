@@ -1,0 +1,8 @@
+
+Priming read to enter the sales system.
+
+TANDEM ENTERPRISES
+
+Begi1n the processing of a sales report? Enter 'Y' or 'N': n
+
+Exiting Sales System.

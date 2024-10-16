@@ -1,0 +1,53 @@
+Compiler is using classPath = '[C:\Users\Frankie\Desktop\IS-2063\PA 3\DeleonOlsenOn1PA3\classes, C:\Users\Frankie\Desktop\IS-2063\PA 3\DeleonOlsenOn1PA3, C:\Users\Frankie\Desktop\drjava-beta-20190813-220051.jar]';  bootClassPath = 'null'
+
+Priming read to enter the sales system.
+
+TANDEM ENTERPRISES
+
+Begi1n the processing of a sales report? Enter 'Y' or 'N': Y
+
+What is the projected annual sales for Tandem?  500000
+
+How many sales reps work for Tandem?  1
+
+Enter the name of a sales rep:  stella brown
+
+Sales Rep Name:  stella brown
+
+Is this name correct?  'Y' or 'N':  y
+
+Enter the number of quarters worked (no less than 1 or greater than 4):  1
+
+1.  First Quarter
+2.  Second Quarter
+3.  Third Quarter
+4.  Fourth Quarter
+
+Choose the quarter in which sales were earned:  3
+
+Enter the sales revenue for the 1st month of the Third Quarter:  150000
+
+Enter the sales revenue for the 2nd month of the Third Quarter:  55000
+
+Enter the sales revenue for the 3rd month of the Third Quarter:  80000
+
+%n%nTANDEM ENTERPRISES
+SALES REVENUE FOR 1 QUARTER(S) OF 2023
+SALES REP:  Stella Brown
+
+Total Year-To-Date:      $         285,000.00
+
+Keep up the GOOD work, Stella.  There is a possible year-end bonus!
+
+CORPORATE SALES PERFORMANCE
+
+Sales are lagging projections.  A year-end bonus may not be possible.
+
+Enter the file name for sales report (WARNING: This will erase a pre-existing file!): SalesReport.txt
+Data written to the SalesReport.txt file.
+
+Enter the name for the sales report file: SalesReport.txt
+
+04/23/23, 1, Stella Brown, 285000.00
+
+Exiting Sales System.

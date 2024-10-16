@@ -1,0 +1,238 @@
+/***********************************************************************************************
+  * Author: Frankie Deleon & John Olsen
+  * Course Section: IS-2063-ON2 
+  * Date: 03/21/2023 
+  *********************************************************************************************/
+import java.util.Calendar; //import calendar
+import java.util.Scanner;
+
+public class DeleonOlsenON1PA2
+{
+  private static Scanner input = new Scanner(System.in);
+  private static String monthNo;
+  private static String salesRep;
+  private static String quarter;
+  private static double quarterlySales;
+  private static int qtrCounter;
+  private static int noOfQtrs;
+  
+  public static void main(String[] args)
+  {
+    double salesRevenue = 0.0;
+    double annualSales = 0.0;
+    double projectedSales = 0.0;
+    double percOfTargetCo = 0.0;
+    double percOfTargetRep = 0.0;
+    int qtrChoice = 0;
+    int monthCounter = 0;
+    int noOfMonths = 3;
+    int noSalesReps = 0;
+    int salesRepCtr = 0;
+
+    System.out.printf("%nWhat is the projected annual sales for Tandem? "); //Prompt 1
+    while (!input.hasNextDouble()) //validate for a floating point using a while loop. 
+    {
+      input.next();
+      System.out.printf("%nNOT a valid floating-point! Please re-enter the projected sales for Tandem: ");
+    }
+    projectedSales = input.nextDouble(); //gather input for projectedSales
+      
+    
+   
+    System.out.printf("%nHow many sales reps work for Tandem? "); //Prompt 2
+    while (!input.hasNextInt()) //validate for a integer using a while loop. 
+    {
+      input.next();
+      System.out.printf("%nNOT a valid integer! Please re-enter the projected sales reps for Tandem: ");
+    }
+    noSalesReps = input.nextInt(); //gather input for number of sales reps.
+    
+    
+    do //begin do-while loop.
+    {
+      qtrCounter = 1; //Reinitialize qtrCounter to 1.
+      quarterlySales = 0.0; //Zero out quarterlySales. 
+      salesRepCtr++; //Post-increment salesRepCtr. 
+        
+      promptSalesRep(salesRepCtr); //Call promptSalesRep(). 
+      promptNoQtrs(); // Call  promptNoQtrs(). 
+           // 1               // 1
+      while(qtrCounter <= noOfQtrs) //Nested while loop controls the number of quarters.
+      {
+        monthCounter = 1; //Initialize monthCounter to 1.
+        qtrChoice = chooseQtr(); //Call chooseQtr().  
+            // 1                    3
+        while(monthCounter <= noOfMonths)//Nested, nested while loop controls the number of months within a quarter.
+        {
+          determineMonthNo(monthCounter); //Call determineMonthNo().
+          salesRevenue = promptSalesRevenue(); //Call promptSalesRevenue().
+          quarterlySales += salesRevenue; //Use combined assignment operator to add salesRevenue to quarterlySales.
+          ++monthCounter;//Pre-increment monthCounter. 
+        } //end of nested while loop
+        annualSales += quarterlySales; //Use combined assignment operator to add quarterlySales to annualSales. 
+        ++qtrCounter; // Pre-increment qtrCounter. 
+      } //end of nested while loop
+    
+          
+
+       printSalesRepRevReport(); //Call printSalesRepRevReport().
+          
+       percOfTargetRep = quarterlySales / (projectedSales/noSalesReps)* 100; //Calculate the percOfTargetRep which determines whether the sales rep is on target for their portion of the projected sales.
+          
+       if(noOfQtrs < 4) //if the noOfQtrs is less than 4
+       {
+                  /*ternary operation to test if percOfTargetRep is greater than or equal to 50, 
+         if so print where the substring() grabs the first name and uppercases the first letter. 
+         Use the following message as the first value which will have no semicolon at the end. 
+         */
+         System.out.printf(percOfTargetRep >= 50 ? String.format( "%nKeep up the GOOD work, %s. " 
+                             + "There is a possible year-end bonus!%n", salesRep.substring(0, salesRep.indexOf(' ')).substring(0, 1).toUpperCase() 
+                             + salesRep.substring(1, salesRep.indexOf(' '))) 
+                             : "%nSo far sales are lagging behind projections.%n");
+       }//end if scope
+
+
+       
+    }while (salesRepCtr < noSalesReps);//end do-while
+    
+    percOfTargetCo = (annualSales/projectedSales)* 100;
+    //print 4
+    System.out.printf("CORPORATE SALES PERFORMANCE%n%n");
+    System.out.printf(percOfTargetCo >= 100 
+                        ? "It's been a GOOD year so far. There could be a year-end bonus of about 2-5%% if we can keep on top of our sales goals. Thank you all and please continue your excellent effort!\n" 
+                        : "Sales are lagging projections. A year-end bonus may not be possible");
+    System.exit(0);
+    }
+    //======================================================================================
+    public static void promptSalesRep(int salesRepCtr)
+    {
+      int index;
+      int spaceCount = 0;
+      input.nextLine();
+      System.out.printf("%nEnter the name of %s sales rep: ", salesRepCtr == 1 ? "a" : "the next");
+      salesRep = input.nextLine();
+      
+      for(char blank : salesRep.toCharArray())
+      {
+        if(blank ==' ')
+        {
+          spaceCount++;
+          }
+      }
+      StringBuilder rep = new StringBuilder(salesRep);
+      rep.setCharAt(0, salesRep.toUpperCase().charAt(0));
+      index = salesRep.indexOf(' ');
+      for(int i = 1; i <= spaceCount; i++)
+      {
+        rep.setCharAt(++index, salesRep.toUpperCase().charAt(index));
+        index = salesRep.indexOf(' ', index);
+      } // END for i from 1 thru spaceCount.
+      salesRep = rep.toString();
+    }
+    //=============================================================================================
+    
+    public static void promptNoQtrs()
+    {
+     //prompt
+
+      System.out.printf("%nEnter the number of quarters worked (no less than 1 or greater than 4):");
+      
+      
+      while(!input.hasNextInt()) {
+        input.next();
+        System.out.printf("%nNOT a valid integer! Please re-enter the number of quarters worked (1-4): ");        
+      }
+      noOfQtrs = input.nextInt();
+    }
+    //======================================================================================
+    public static int chooseQtr()
+    {
+      //declare local varibale
+      int qtrChosen = 0;
+      //prompt.
+      System.out.printf("%n1. First Quarter");
+      System.out.printf("%n2. Second Quarter");      
+      System.out.printf("%n3. Third Quarter");
+      System.out.printf("%n4. Fourth Quarter");
+      
+      
+      System.out.printf("%n%nChoose the %squarter in which sales were earned: ", qtrCounter > 1 ? "next" : "");
+      
+      while(!input.hasNextInt())
+      {
+        input.next();
+        System.out.printf("%nNOT a valid integer! Please re-enter the quarter.%n");
+        System.out.printf("%n1. First Quarter");
+        System.out.printf("%n2. Second Quarter");      
+        System.out.printf("%n3. Third Quarter");
+        System.out.printf("%n4. Fourth Quarter");      
+        System.out.printf("%n%nChoose the %squarter in which sales were earned: ", qtrCounter > 1 ? "next" : "");
+        
+        
+        
+      }
+      qtrChosen= input.nextInt();
+      quarter =(qtrChosen == 1) ? "First Quarter" : (qtrChosen == 2) ? "Second Quarter" : (qtrChosen == 3) ? "Third Quarter" : "Fourth Quarter";
+      
+      return qtrChosen;
+    }
+
+    //======================================================================================       
+    public static void determineMonthNo(int monthCounter)
+    {
+      //use switch
+      switch(monthCounter)
+      {
+        case 1:
+          monthNo = "1st";
+          break;
+        case 2:
+          monthNo = "2nd";
+          break;
+        case 3:
+          monthNo = "3rd";
+          break;
+        default:
+        monthNo = monthCounter + "th";
+        break;
+      }
+    }
+    //======================================================================================
+    public static double promptSalesRevenue()
+    {
+      //declare local variable
+      double salesRev = 0.0;
+      //prompt
+      System.out.printf("%nEnter the sales revenue for the %s month of the %s: ", monthNo, quarter); 
+      
+      while(!input.hasNextDouble()) {
+        input.next();
+        System.out.printf("%nNOT a valid floating-point!");
+        System.out.printf("%nPlease re-enter the sales revenue for the %s month of the %s: ", monthNo, quarter); 
+        
+      }
+      
+      salesRev = input.nextDouble(); // gather input for salesRevenue double. 
+      return salesRev;
+    }
+    //======================================================================================
+    public static void printSalesRepRevReport()
+    {
+      //declare local varibale
+      Calendar dateTime = Calendar.getInstance(); //declare dateTime variable to get calendar instance.
+      //print final output
+      System.out.printf("%n%nTANDEM ENTERPRISES%n");
+      System.out.printf("SALES REVENUE FOR %d QUARTER(S) OF %s", noOfQtrs, dateTime.get(Calendar.YEAR));
+      System.out.printf("%nSALES REP:  %s%n", salesRep);
+      System.out.printf("%nTotal Year-To-Date:            $%,.2f%n",quarterlySales);      
+    }        
+  }      
+
+
+/*
+ * 
+ * 
+ * 
+ */
+    
+    
